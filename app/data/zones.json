@@ -1,0 +1,110 @@
+[
+  {
+    "zone_id": "Z001",
+    "name": "Riverside Colony",
+    "lat": 19.0760,
+    "lng": 72.8777,
+    "elevation_m": 4.2,
+    "drainage_capacity": 0.25,
+    "historical_flood_frequency": 0.85
+  },
+  {
+    "zone_id": "Z002",
+    "name": "Market Square",
+    "lat": 19.0820,
+    "lng": 72.8850,
+    "elevation_m": 8.5,
+    "drainage_capacity": 0.55,
+    "historical_flood_frequency": 0.40
+  },
+  {
+    "zone_id": "Z003",
+    "name": "Old Town",
+    "lat": 19.0650,
+    "lng": 72.8700,
+    "elevation_m": 3.1,
+    "drainage_capacity": 0.20,
+    "historical_flood_frequency": 0.90
+  },
+  {
+    "zone_id": "Z004",
+    "name": "Tech Park",
+    "lat": 19.1100,
+    "lng": 72.9000,
+    "elevation_m": 15.0,
+    "drainage_capacity": 0.80,
+    "historical_flood_frequency": 0.10
+  },
+  {
+    "zone_id": "Z005",
+    "name": "Lakeview Sector",
+    "lat": 19.0950,
+    "lng": 72.8600,
+    "elevation_m": 5.5,
+    "drainage_capacity": 0.35,
+    "historical_flood_frequency": 0.65
+  },
+  {
+    "zone_id": "Z006",
+    "name": "Industrial Belt",
+    "lat": 19.0500,
+    "lng": 72.9100,
+    "elevation_m": 6.8,
+    "drainage_capacity": 0.45,
+    "historical_flood_frequency": 0.50
+  },
+  {
+    "zone_id": "Z007",
+    "name": "Green Valley",
+    "lat": 19.1200,
+    "lng": 72.8500,
+    "elevation_m": 18.2,
+    "drainage_capacity": 0.85,
+    "historical_flood_frequency": 0.05
+  },
+  {
+    "zone_id": "Z008",
+    "name": "Central Business District",
+    "lat": 19.0700,
+    "lng": 72.8800,
+    "elevation_m": 9.0,
+    "drainage_capacity": 0.60,
+    "historical_flood_frequency": 0.35
+  },
+  {
+    "zone_id": "Z009",
+    "name": "Harbor District",
+    "lat": 19.0400,
+    "lng": 72.8300,
+    "elevation_m": 2.5,
+    "drainage_capacity": 0.15,
+    "historical_flood_frequency": 0.95
+  },
+  {
+    "zone_id": "Z010",
+    "name": "Northgate Suburbs",
+    "lat": 19.1400,
+    "lng": 72.8900,
+    "elevation_m": 12.5,
+    "drainage_capacity": 0.70,
+    "historical_flood_frequency": 0.15
+  },
+  {
+    "zone_id": "Z011",
+    "name": "Eastside Flats",
+    "lat": 19.0600,
+    "lng": 72.9200,
+    "elevation_m": 4.8,
+    "drainage_capacity": 0.30,
+    "historical_flood_frequency": 0.70
+  },
+  {
+    "zone_id": "Z012",
+    "name": "University Campus",
+    "lat": 19.1000,
+    "lng": 72.8650,
+    "elevation_m": 11.0,
+    "drainage_capacity": 0.65,
+    "historical_flood_frequency": 0.20
+  }
+]

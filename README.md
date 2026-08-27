@@ -1,157 +1,115 @@
-# FloodTwin AI — Prediction Engine (Member 1: AI/ML)
+# 🌧️ JAL-DRISHTI — Integrated Ravet/Pune Flood Scenario & Emergency Routing
 
-FastAPI microservice that predicts urban flood risk scores and short-term
-(1–6h) forecasts per zone. This is the AI/ML module in the FloodTwin AI
-pipeline: **Data Collection → AI Prediction → Digital Twin → Simulation →
-Risk Assessment → Route Optimization → Dashboard**.
+**Team:** ARC Reactors  
+**Target:** Pune metropolitan area — Ravet / Pimpri-Chinchwad MVP study area  
+**Purpose:** Integrated final prototype for the assigned flood-scenario, vulnerable-road, evacuation-routing and emergency-response module.
 
-It's built to run fully offline with synthetic training data, so nothing
-here blocks on Member 6 wiring up real sensors — swap `synthetic_data.py`'s
-role later without touching the API contract, and Backend/Frontend can
-integrate against this today.
+## What was integrated
 
-## Setup
+This repository combines:
 
-```bash
-cd floodtwin-ai-engine
+1. **ARC Reactors flood/routing engine**
+   - rainfall-duration scenarios
+   - road-level risk scoring
+   - vulnerable/closed roads
+   - risk-aware evacuation routing
+   - emergency-response prioritization
+   - interactive Streamlit dashboard
+
+2. **Teammate's GIS / Digital Twin package**
+   - Ravet study-area GeoJSON
+   - Pavana River reference geometry
+   - QGIS project (`gis/Ravet_FloodTwin_Member2.qgz`)
+   - GeoPackage reference package
+   - reproducible OSM and SRTM download scripts
+   - base maps and source documentation
+
+The application overlays the teammate's **study area and Pavana River reference** on the same interactive map used by the routing engine.
+
+## Important data-status statement
+
+This is a **functional SIH prototype**, not an operational flood forecast.
+
+- OpenStreetMap road/facility data can be acquired online through OSMnx.
+- The supplied study-area and Pavana reference files come from the teammate's GIS package.
+- Rainfall scenarios, emergency incidents and several risk parameters are prototype inputs.
+- The current terrain term is a relative proxy unless a validated DEM has been downloaded and integrated into the risk model.
+- The teammate's package explicitly states that it does not contain a fabricated flood-risk heatmap.
+
+Do not present the current risk score as flood probability, flood depth, or an official warning.
+
+## Run
+
+```powershell
+python -m venv venv
+venv\\Scripts\\activate
 pip install -r requirements.txt
-
-# Train the model (creates app/models/risk_model.pkl)
-python train_and_save_model.py
-
-# Run the server
-uvicorn app.main:app --reload
+python -m pytest -q
+streamlit run app.py
 ```
 
-Server runs at `http://localhost:8000`. Interactive docs at
-`http://localhost:8000/docs`.
+If you only want to test without network access, switch **Use OpenStreetMap road/infrastructure data** off in the dashboard.
 
-## Retraining
+## GIS package
 
-Just re-run `python train_and_save_model.py`. It regenerates 5,000 rows of
-synthetic data and retrains from scratch — takes a few seconds.
+Open `gis/Ravet_FloodTwin_Member2.qgz` in QGIS to inspect the teammate's GIS layers.
 
-To use real sensor data instead of synthetic data, replace the call in
-`app/models/train.py` (`generate_training_data`) with your real dataset,
-keeping the same column names: `rainfall_mm_last_1h`, `rainfall_mm_last_6h`,
-`water_level_cm`, `drainage_capacity`, `elevation_m`,
-`historical_flood_frequency`, `risk_score`.
+The teammate's scripts are in `gis/scripts/`:
 
-## API Contract
+- `download_osm_member2.sh`
+- `download_dem_member2.sh`
 
-| Method | Endpoint | Purpose |
-|---|---|---|
-| POST | `/predict/risk-score` | Real-time risk score (0–100) for one zone |
-| POST | `/predict/forecast` | Risk trajectory for next N hours for one zone |
-| GET | `/zones` | Static metadata for all zones (for GIS/dashboard) |
-| GET | `/health` | Health check |
+The GIS package documents the working extent as:
 
-### POST /predict/risk-score
+- South: 18.615
+- West: 73.705
+- North: 18.675
+- East: 73.785
+- CRS: EPSG:4326
 
-Request:
-```json
-{
-  "zone_id": "Z001",
-  "rainfall_mm_last_1h": 35.0,
-  "rainfall_mm_last_6h": 80.0,
-  "water_level_cm": 120.0
-}
+The extent is a working MVP extent, not an official administrative boundary.
+
+## Architecture
+
+```text
+                 RAVET / PUNE GIS
+                       │
+          ┌────────────┼─────────────┐
+          ↓            ↓             ↓
+       OSM roads    Study area    Pavana reference
+          │            │             │
+          └────────────┼─────────────┘
+                       ↓
+                Scenario Engine
+                       ↓
+                  Risk Model
+                       ↓
+             Vulnerable / Closed Roads
+                       ↓
+               Dynamic Road Graph
+                  ↙           ↘
+          Evacuation        Emergency
+            Routing          Response
+                  ↘           ↙
+                   Interactive Map
 ```
 
-Response:
-```json
-{
-  "zone_id": "Z001",
-  "risk_score": 62.4,
-  "risk_level": "high",
-  "timestamp": "2026-08-24T10:15:00Z"
-}
-```
+## Repository structure
 
-`risk_level` buckets: `low` (0–25), `moderate` (26–50), `high` (51–75),
-`severe` (76–100).
+- `app.py` — Streamlit application
+- `src/` — scenario, risk, routing, response and GIS integration modules
+- `tests/` — automated tests
+- `gis/` — teammate's QGIS/GIS package
+- `docs/` — architecture, provenance, demo and judge guidance
 
-### POST /predict/forecast
+## Production upgrade
 
-Request:
-```json
-{
-  "zone_id": "Z001",
-  "rainfall_forecast_mm": [15, 25, 40, 30, 10, 5],
-  "current_water_level_cm": 70.0
-}
-```
-Each element in `rainfall_forecast_mm` is forecasted rainfall (mm) for the
-next hour, in order (index 0 = next 1h, index 1 = the hour after, etc).
-This forecast normally comes from a weather API (Member 6's job) — for
-local testing you can pass any array.
+For a scientifically validated flood system, integrate a validated Pune DEM, authoritative rainfall/forecast data, drainage capacity/network, historical flood observations, calibrated thresholds/models and verified shelter/emergency-unit data.
 
-Response:
-```json
-{
-  "zone_id": "Z001",
-  "forecast": [
-    { "hours_ahead": 1, "predicted_risk_score": 56.9, "risk_level": "high" },
-    { "hours_ahead": 2, "predicted_risk_score": 67.0, "risk_level": "high" }
-  ]
-}
-```
+## Attribution
 
-### GET /zones
+OpenStreetMap data: **© OpenStreetMap contributors, ODbL**.
 
-Returns all zone metadata (id, name, lat/lng, elevation, drainage capacity,
-historical flood frequency). This is what the GIS/Digital Twin module
-(Member 2) should pull to render the base map.
+## License
 
-### GET /health
-
-```json
-{ "status": "ok", "model_loaded": true }
-```
-
-## Error handling
-
-- Unknown `zone_id` → `404` with `{"detail": "Zone '...' not found"}`
-- Negative rainfall/water-level values → `422` with validation detail
-
-## Model
-
-RandomForestRegressor (scikit-learn), trained on 5,000 synthetic rows.
-Current run: **MAE ≈ 4.8, R² ≈ 0.94** on held-out test data. Feature
-importances (highest first): `rainfall_mm_last_1h`, `rainfall_mm_last_6h`,
-`historical_flood_frequency`, `elevation_m`, `drainage_capacity`,
-`water_level_cm` — matches physical intuition (short-burst rainfall
-dominates near-term risk).
-
-## Project structure
-
-```
-floodtwin-ai-engine/
-├── app/
-│   ├── main.py                 # FastAPI app entrypoint
-│   ├── data/
-│   │   ├── synthetic_data.py   # synthetic training data generator
-│   │   └── zones.json          # 12 mock urban zones
-│   ├── models/
-│   │   ├── train.py            # trains + saves RandomForest model
-│   │   ├── forecast.py         # prediction + forecast logic
-│   │   └── risk_model.pkl      # trained model (generated)
-│   ├── api/
-│   │   ├── routes.py
-│   │   └── schemas.py
-│   └── core/
-│       └── config.py
-├── requirements.txt
-├── train_and_save_model.py
-└── README.md
-```
-
-## Next steps / integration notes for the team
-
-- **Member 5 (Backend):** call this service directly from your API layer,
-  or reverse-proxy it. Response schemas are stable and documented above.
-- **Member 6 (Data/IoT):** once real rainfall/water-level sensors or a
-  weather API are wired up, swap the request source feeding
-  `/predict/risk-score` and `/predict/forecast` — no contract changes needed.
-- **Member 2/3 (GIS/Simulation):** `/zones` gives you the static layer;
-  call `/predict/risk-score` per zone to color your heatmap/simulation.
+MIT — see `LICENSE`.

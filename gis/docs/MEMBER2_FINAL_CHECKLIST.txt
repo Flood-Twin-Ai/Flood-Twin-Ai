@@ -1,0 +1,24 @@
+MEMBER 2 FINAL REPOSITORY CHECKLIST
+
+[x] Member 2 scope isolated
+[x] Flood-risk heatmap/result excluded
+[x] Working study area included
+[x] Pavana River reference included
+[x] QGIS project included
+[x] Reproducible OSM roads download script included
+[x] Reproducible OSM building download script included
+[x] Reproducible OSM drainage/waterway download script included
+[x] Reproducible SRTM DEM download script included
+[x] Base maps included
+[x] Source attribution documented
+[x] No invented roads/buildings/elevation values
+[x] README and repository instructions included
+
+DATA VALIDATION BEFORE FINAL ANALYSIS
+[ ] Run download_osm_member2.sh
+[ ] Run download_dem_member2.sh
+[ ] Open layers in QGIS
+[ ] Clip/check all layers to study_area
+[ ] Confirm OSM attribution
+[ ] Confirm DEM coverage and CRS
+[ ] Keep Member 1 flood-risk outputs outside this Member 2 package

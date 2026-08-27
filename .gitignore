@@ -1,5 +1,10 @@
-__pycache__/
-*.pkl
 venv/
-venv_new/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.streamlit/secrets.toml
 .env
+.DS_Store
+cache/
+*.log

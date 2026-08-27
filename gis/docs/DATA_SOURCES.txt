@@ -1,0 +1,21 @@
+MEMBER 2 DATA SOURCES
+
+OpenStreetMap:
+https://www.openstreetmap.org/
+https://overpass-api.de/
+
+Overpass API documentation:
+https://wiki.openstreetmap.org/wiki/Overpass_API
+
+SRTM elevation:
+Public SRTM tile endpoint used by scripts:
+https://s3.amazonaws.com/elevation-tiles-prod/skadi/N18/N18E073.hgt.gz
+
+QGIS:
+https://qgis.org/download/
+
+Study extent:
+18.615, 73.705 to 18.675, 73.785 (EPSG:4326)
+
+Attribution:
+© OpenStreetMap contributors, ODbL.

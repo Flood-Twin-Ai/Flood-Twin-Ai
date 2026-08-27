@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qgis projectname="Ravet FloodTwin Member 2" version="3.40.0">
+  <homePath path=""/>
+  <title>Ravet FloodTwin - Member 2 GIS</title>
+  <projectCrs>
+    <spatialrefsys>
+      <authid>EPSG:4326</authid>
+      <description>WGS 84</description>
+      <projectionacronym>longlat</projectionacronym>
+      <ellipsoidacronym>WGS84</ellipsoidacronym>
+    </spatialrefsys>
+  </projectCrs>
+  <layer-tree-group name="Ravet FloodTwin GIS" checked="Qt::Checked" expanded="1">
+    <layer-tree-layer name="Drainage" source="Ravet_FloodTwin_Member2_GIS.gpkg|layername=drainage" providerKey="ogr" id="drainage" checked="Qt::Checked"/>
+    <layer-tree-layer name="Buildings" source="Ravet_FloodTwin_Member2_GIS.gpkg|layername=buildings" providerKey="ogr" id="buildings" checked="Qt::Checked"/>
+    <layer-tree-layer name="Roads" source="Ravet_FloodTwin_Member2_GIS.gpkg|layername=roads" providerKey="ogr" id="roads" checked="Qt::Checked"/>
+    <layer-tree-layer name="Pavana River (Reference)" source="Ravet_FloodTwin_Member2_GIS.gpkg|layername=pavana_reference" providerKey="ogr" id="pavana_reference" checked="Qt::Checked"/>
+    <layer-tree-layer name="Study Area" source="Ravet_FloodTwin_Member2_GIS.gpkg|layername=study_area" providerKey="ogr" id="study_area" checked="Qt::Checked"/>
+  </layer-tree-group>
+  <projectlayers>
+    
+    <maplayer type="vector" hasScaleBasedVisibilityFlag="0" autoRefreshEnabled="0" autoRefreshTime="0" geometry="Polygon" simplifyDrawingHints="1" simplifyAlgorithm="0" simplifyDrawingTol="1" simplifyMaxScale="1" simplifyLocal="1" readOnly="0" minScale="1e+08" maxScale="0" refreshOnNotifyEnabled="0" refreshOnNofifyEnabled="0" autoRefreshMode="0" autoRefreshTime="0" autoRefreshMode="0" labelsEnabled="0" name="Study Area" id="study_area">
+      <datasource>Ravet_FloodTwin_Member2_GIS.gpkg|layername=study_area</datasource>
+      <provider>ogr</provider>
+      <layername>Study Area</layername>
+      <srs>
+        <spatialrefsys>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+        </spatialrefsys>
+      </srs>
+      <renderer-v2 type="singleSymbol" enableorderby="0" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="1" clip_to_extent="1" force_rhr="0">
+            <layer class="SimpleFill">
+              <Option type="Map">
+                <Option name="color" value="255,255,255,0"/>
+                <Option name="outline_color" value="80,80,80,255"/>
+                <Option name="outline_width" value="0.6"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+    <maplayer type="vector" hasScaleBasedVisibilityFlag="0" autoRefreshEnabled="0" autoRefreshTime="0" geometry="LineString" simplifyDrawingHints="1" simplifyAlgorithm="0" simplifyDrawingTol="1" simplifyMaxScale="1" simplifyLocal="1" readOnly="0" minScale="1e+08" maxScale="0" refreshOnNotifyEnabled="0" refreshOnNofifyEnabled="0" autoRefreshMode="0" autoRefreshTime="0" autoRefreshMode="0" labelsEnabled="0" name="Pavana River (Reference)" id="pavana_reference">
+      <datasource>Ravet_FloodTwin_Member2_GIS.gpkg|layername=pavana_reference</datasource>
+      <provider>ogr</provider>
+      <layername>Pavana River (Reference)</layername>
+      <srs>
+        <spatialrefsys>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+        </spatialrefsys>
+      </srs>
+      <renderer-v2 type="singleSymbol" enableorderby="0" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="1" clip_to_extent="1" force_rhr="0">
+            <layer class="SimpleFill">
+              <Option type="Map">
+                <Option name="color" value="255,255,255,0"/>
+                <Option name="outline_color" value="80,80,80,255"/>
+                <Option name="outline_width" value="0.6"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+    <maplayer type="vector" hasScaleBasedVisibilityFlag="0" autoRefreshEnabled="0" autoRefreshTime="0" geometry="LineString" simplifyDrawingHints="1" simplifyAlgorithm="0" simplifyDrawingTol="1" simplifyMaxScale="1" simplifyLocal="1" readOnly="0" minScale="1e+08" maxScale="0" refreshOnNotifyEnabled="0" refreshOnNofifyEnabled="0" autoRefreshMode="0" autoRefreshTime="0" autoRefreshMode="0" labelsEnabled="0" name="Roads" id="roads">
+      <datasource>Ravet_FloodTwin_Member2_GIS.gpkg|layername=roads</datasource>
+      <provider>ogr</provider>
+      <layername>Roads</layername>
+      <srs>
+        <spatialrefsys>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+        </spatialrefsys>
+      </srs>
+      <renderer-v2 type="singleSymbol" enableorderby="0" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="1" clip_to_extent="1" force_rhr="0">
+            <layer class="SimpleFill">
+              <Option type="Map">
+                <Option name="color" value="255,255,255,0"/>
+                <Option name="outline_color" value="80,80,80,255"/>
+                <Option name="outline_width" value="0.6"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+    <maplayer type="vector" hasScaleBasedVisibilityFlag="0" autoRefreshEnabled="0" autoRefreshTime="0" geometry="Polygon" simplifyDrawingHints="1" simplifyAlgorithm="0" simplifyDrawingTol="1" simplifyMaxScale="1" simplifyLocal="1" readOnly="0" minScale="1e+08" maxScale="0" refreshOnNotifyEnabled="0" refreshOnNofifyEnabled="0" autoRefreshMode="0" autoRefreshTime="0" autoRefreshMode="0" labelsEnabled="0" name="Buildings" id="buildings">
+      <datasource>Ravet_FloodTwin_Member2_GIS.gpkg|layername=buildings</datasource>
+      <provider>ogr</provider>
+      <layername>Buildings</layername>
+      <srs>
+        <spatialrefsys>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+        </spatialrefsys>
+      </srs>
+      <renderer-v2 type="singleSymbol" enableorderby="0" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="1" clip_to_extent="1" force_rhr="0">
+            <layer class="SimpleFill">
+              <Option type="Map">
+                <Option name="color" value="255,255,255,0"/>
+                <Option name="outline_color" value="80,80,80,255"/>
+                <Option name="outline_width" value="0.6"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+    <maplayer type="vector" hasScaleBasedVisibilityFlag="0" autoRefreshEnabled="0" autoRefreshTime="0" geometry="LineString" simplifyDrawingHints="1" simplifyAlgorithm="0" simplifyDrawingTol="1" simplifyMaxScale="1" simplifyLocal="1" readOnly="0" minScale="1e+08" maxScale="0" refreshOnNotifyEnabled="0" refreshOnNofifyEnabled="0" autoRefreshMode="0" autoRefreshTime="0" autoRefreshMode="0" labelsEnabled="0" name="Drainage" id="drainage">
+      <datasource>Ravet_FloodTwin_Member2_GIS.gpkg|layername=drainage</datasource>
+      <provider>ogr</provider>
+      <layername>Drainage</layername>
+      <srs>
+        <spatialrefsys>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+        </spatialrefsys>
+      </srs>
+      <renderer-v2 type="singleSymbol" enableorderby="0" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="1" clip_to_extent="1" force_rhr="0">
+            <layer class="SimpleFill">
+              <Option type="Map">
+                <Option name="color" value="255,255,255,0"/>
+                <Option name="outline_color" value="80,80,80,255"/>
+                <Option name="outline_width" value="0.6"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+  </projectlayers>
+  <layerorder>
+    <layer id="flood_risk"/>
+    <layer id="elevation"/>
+    <layer id="drainage"/>
+    <layer id="buildings"/>
+    <layer id="roads"/>
+    <layer id="pavana_reference"/>
+    <layer id="study_area"/>
+  </layerorder>
+  <mapcanvas name="theMapCanvas" annotationsVisible="1" simplifyDrawingHints="1" simplifyDrawingTol="1" simplifyMaxScale="1" simplifyDrawingGroup="0" scaleBasedVisibility="0">
+    <units>degrees</units>
+    <extent>
+      <xmin>73.705</xmin>
+      <ymin>18.615</ymin>
+      <xmax>73.785</xmax>
+      <ymax>18.675</ymax>
+    </extent>
+    <rotation>0</rotation>
+    <destinationsrs>
+      <spatialrefsys>
+        <authid>EPSG:4326</authid>
+        <description>WGS 84</description>
+        <projectionacronym>longlat</projectionacronym>
+        <ellipsoidacronym>WGS84</ellipsoidacronym>
+      </spatialrefsys>
+    </destinationsrs>
+  </mapcanvas>
+  <projectlayers/>
+  <layer-tree-canvas/>
+</qgis>

@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-basin-950 text-mist-300 font-display antialiased;
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(45, 212, 191, 0.06), transparent 40%),
+      radial-gradient(circle at 85% 20%, rgba(249, 115, 22, 0.05), transparent 35%);
+    background-attachment: fixed;
+  }
+  ::selection {
+    @apply bg-tide-500/30 text-white;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-basin-700 rounded-full;
+  }
+  :focus-visible {
+    outline: 2px solid #2dd4bf;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply bg-basin-800/80 border border-basin-700 rounded-xl shadow-panel backdrop-blur;
+  }
+  .eyebrow {
+    @apply text-[11px] tracking-[0.18em] uppercase text-mist-500 font-mono;
+  }
+  .stat-value {
+    @apply font-mono font-semibold tabular-nums;
+  }
+  .btn-primary {
+    @apply bg-tide-500 text-basin-950 font-semibold px-4 py-2 rounded-lg
+      hover:bg-tide-400 active:bg-tide-600 transition-colors duration-150;
+  }
+  .btn-ghost {
+    @apply bg-basin-700/60 text-mist-300 font-medium px-4 py-2 rounded-lg
+      hover:bg-basin-600 hover:text-white transition-colors duration-150;
+  }
+}
+
+/* Leaflet dark control-room theme overrides */
+.leaflet-container {
+  background: #0b1220 !important;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+.leaflet-control-attribution {
+  background: rgba(7, 11, 20, 0.7) !important;
+  color: #7c8aa8 !important;
+}
+.leaflet-control-attribution a {
+  color: #5eead4 !important;
+}
+.leaflet-control-zoom a {
+  background: #111a2c !important;
+  color: #b7c3d9 !important;
+  border-color: #1b2740 !important;
+}
+.leaflet-control-zoom a:hover {
+  background: #1b2740 !important;
+  color: #fff !important;
+}
+.leaflet-popup-content-wrapper {
+  background: #111a2c !important;
+  color: #b7c3d9 !important;
+  border: 1px solid #1b2740;
+  border-radius: 10px !important;
+}
+.leaflet-popup-tip {
+  background: #111a2c !important;
+}
